@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rechnungs Tabelle - Preview</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    html, body { margin: 0; padding: 0; height: 100%; background: #0D1117; color: white; }
-    #addon-root { height: 100%; overflow: auto; padding: 1rem; }
-  </style>
-</head>
-<body>
-  <div id="addon-root"></div>
-  <script>
-    (function() {
-      const root = document.getElementById('addon-root');
-      try {
-        // Execute the code directly
-        
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -230,41 +211,5 @@
             </React.StrictMode>
         );
     </script>
-</body>
-</html>
-
-        // Look for any exported function or class
-        const possibleExports = [
-          typeof addon !== 'undefined' ? addon : null,
-          typeof Addon !== 'undefined' ? Addon : null,
-          typeof init !== 'undefined' ? init : null,
-          typeof render !== 'undefined' ? render : null,
-          typeof main !== 'undefined' ? main : null
-        ];
-
-        // Find the first valid export
-        const AddonClass = possibleExports.find(exp => typeof exp === 'function');
-
-        if (AddonClass) {
-          // Try to instantiate or call the function
-          try {
-            new AddonClass(root);
-          } catch (e) {
-            AddonClass(root);
-          }
-        } else {
-          throw new Error('No valid add-on implementation found');
-        }
-      } catch (error) {
-        root.innerHTML = `
-          <div class="bg-red-900/30 text-red-400 p-4 rounded-lg">
-            <h3 class="font-bold mb-2">Error Loading Add-on</h3>
-            <pre class="whitespace-pre-wrap">${error.message}</pre>
-          </div>
-        `;
-        console.error('Add-on initialization error:', error);
-      }
-    })();
-  </script>
 </body>
 </html>
